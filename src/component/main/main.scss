@@ -1,0 +1,55 @@
+#inputDiv{
+   
+    text-align: center;
+}
+body{
+    
+    background-color:#e7e4e16e;
+}
+#inputDiv p{
+    display: inline; 
+}
+
+#inputDiv input{
+    width: 200px;
+}
+#form {
+    text-align: center;
+    margin: 30px;
+}
+
+#form input{
+    background-color: rgb(231, 228, 225);
+    margin: 20px;
+
+}
+label:hover{
+    background-color: rgb(251, 251, 255);
+}
+label:active{
+    background-color: rgb(129, 129, 212);
+}
+
+label {
+    width: 50px;
+    padding: 7px;
+    margin: 5px;
+    background: rgb(218, 214, 214);
+    border-radius: 1px;
+    color: black;
+
+  }
+#result{
+    background-color: rgb(231, 228, 225);
+    margin: 20px;
+    border: 1px solid rgb(146, 139, 139);
+    padding-left: 15px;
+    height: 450px;
+
+}
+
+input[type="radio"] {
+    display: none;
+    padding: 30px;
+    margin: 30px;
+  }
