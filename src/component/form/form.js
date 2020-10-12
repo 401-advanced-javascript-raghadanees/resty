@@ -2,7 +2,7 @@ import React from 'react';
 import './main.scss';
 
 
-class Main extends React.Component {
+class Form extends React.Component {
   constructor(props) {
     super(props);
 
@@ -13,24 +13,24 @@ class Main extends React.Component {
     };
   }
 
-  handelInput  (event) {
+  handelInput = (event) => {
     let url = event.target.value;
     console.log('event.target.value > url',event.target.value);
     this.setState({ url }); //rerender
   }
 
-  handleMethod  (e){
+
+  handleMethod = (e)=>{
     let method = e.target.value;
     console.log('method from select',method,e.target.value);
     this.setState({ method });
   }
-  handleClick () {
-    let results = this.state.results;
-    console.log('this.state.method',this.state.method);
 
-    results.push(<p  key={this.state.results.length + 1} ><span>{this.state.method}</span> {this.state.url} </p>);
-    this.setState({ results});
-    console.log(results);
+
+  handleClick = () =>{
+    this.props.handelUpdate(this.state.url);
+    this.setState({ url: '' });
+
   }
   
   render() {
@@ -55,12 +55,12 @@ class Main extends React.Component {
           <label htmlFor="delete">DELETE</label>
         </form>
 
-        <div id="result">
+        {/* <div id="result">
           {this.state.results}
-        </div>
+        </div> */}
       </main>
     );
   }
 }
 
-export default Main;
+export default Form;
