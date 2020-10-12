@@ -13,18 +13,18 @@ class Main extends React.Component {
     };
   }
 
-  handelInput  (event) {
+  handelInput = (event) => {
     let url = event.target.value;
     console.log('event.target.value > url',event.target.value);
     this.setState({ url }); //rerender
   }
 
-  handleMethod  (e){
+  handleMethod = (e)=>{
     let method = e.target.value;
     console.log('method from select',method,e.target.value);
     this.setState({ method });
   }
-  handleClick () {
+  handleClick = () => {
     let results = this.state.results;
     console.log('this.state.method',this.state.method);
 
