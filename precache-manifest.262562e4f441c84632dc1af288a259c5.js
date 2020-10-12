@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "cbdca108b02cabfa9a750a1425f09392",
+    "revision": "de99ea0c38e7df398db329a1057129b8",
     "url": "/401-advanced-javascript-raghadanees/resty/index.html"
   },
   {
-    "revision": "5284c44c056483d6b2da",
-    "url": "/401-advanced-javascript-raghadanees/resty/static/css/main.d96fe8be.chunk.css"
+    "revision": "499fb5b3c9a7d810333d",
+    "url": "/401-advanced-javascript-raghadanees/resty/static/css/main.1e98937d.chunk.css"
   },
   {
     "revision": "e8cf487a5bff45db18b7",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/401-advanced-javascript-raghadanees/resty/static/js/2.a54e7450.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "5284c44c056483d6b2da",
-    "url": "/401-advanced-javascript-raghadanees/resty/static/js/main.62bcc4e8.chunk.js"
+    "revision": "499fb5b3c9a7d810333d",
+    "url": "/401-advanced-javascript-raghadanees/resty/static/js/main.10bdace9.chunk.js"
   },
   {
     "revision": "f8d596c3c869946ae1ec",
