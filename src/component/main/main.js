@@ -1,54 +1,62 @@
 import React from 'react';
 import './main.scss';
 
-var method = 'get'
+
 class Main extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = { 
-      results: '',
       url: '',
-      method:''
-    
+      method:'',
+      results:[],
     };
   }
 
-  handelInput = (event) => {
-    const url = event.target.value;
-    console.log(event.target.value);
-    this.setState({ url });
-  };
+  handelInput  (event) {
+    let url = event.target.value;
+    console.log('event.target.value > url',event.target.value);
+    this.setState({ url }); //rerender
+  }
 
-  handleMethod = (e) =>{
-    method = e.target.value;
-   console.log("method from select",method,e.target.value);
-  //  this.setState({ method });
- }
-  handleClick = (e) => {
-    const results = this.state.url;
-    this.setState({ results ,method});
-  };
+  handleMethod  (e){
+    let method = e.target.value;
+    console.log('method from select',method,e.target.value);
+    this.setState({ method });
+  }
+  handleClick () {
+    let results = this.state.results;
+    console.log('this.state.method',this.state.method);
+
+    results.push(<p  key={this.state.results.length + 1} ><span>{this.state.method}</span> {this.state.url} </p>);
+    this.setState({ results});
+    console.log(results);
+  }
+  
   render() {
     return (
       <main>
         <div id="inputDiv" >
           <p>URL: </p>
-        <input type="text" placeholder='https://localhost:3000/categories' onChange={this.handelInput} />
-        <button onClick={this.handleClick}>Go!</button>
+          <input type="text" placeholder='https://localhost:3000/categories' onChange={this.handelInput} />
+          <button onClick={this.handleClick}>Go !</button>
         </div>
-        <form onClick={this.handleMethod} id='form'>
-          <input type="radio" id="get" name="method" value="get" defaultChecked/>
+        <form id='form'>
+          <input onClick={this.handleMethod} type="radio" id="get" name="method" value="get" defaultChecked/>
           <label htmlFor="get">GET</label>
-          <input type="radio" id="post" name="method" value="post"/>
+
+          <input onClick={this.handleMethod} type="radio" id="post" name="method" value="post"/>
           <label htmlFor="post">POST</label>
-          <input type="radio" id="put" name="method" value="put"/>
+
+          <input onClick={this.handleMethod} type="radio" id="put" name="method" value="put"/>
           <label htmlFor="put">PUT</label>
-          <input type="radio" id="delete" name="method" value="delete"/>
+
+          <input onClick={this.handleMethod} type="radio" id="delete" name="method" value="delete"/>
           <label htmlFor="delete">DELETE</label>
         </form>
+
         <div id="result">
-        <p>{this.state.method} {this.state.results}</p>
+          {this.state.results}
         </div>
       </main>
     );
