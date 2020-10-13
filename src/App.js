@@ -7,6 +7,7 @@ import Form from './component/form/form';
 import Footer from './component/footer/footer';
 import Header from './component/header/header.js';
 import Results from './component/results/results.js';
+import History from './component/history/history.js';
 
 class App extends React.Component {
   constructor(props){
@@ -15,23 +16,32 @@ class App extends React.Component {
       count:0,
       results: [],
       headers: [],
+      url:'',
+      method:'',
+      allInput:[],
     };
   }
 
   // url.......  https://swapi.dev/api/people/
-  handelUpdate = async (url)=> {
+  handelUpdate = async (url ,allInput )=> {
     console.log('url from app.js ', url);
+    console.log('allInput from app.js ', allInput);
     let raw = await fetch(url);
     let data = await raw.json();
     this.setState({headers: raw.headers, results: data.results, count: data.count });
+    console.log('allInput handelUpdate',allInput);
+    this.setState({allInput});
   };
 
   render() {
+    let newAllInput = this.state.allInput.map((item, i)=> <li key={i} >{item.url}</li>);
+    console.log('allInput from app render', newAllInput);
     return (
       <React.Fragment>
         <Header />
         <Form handelUpdate={this.handelUpdate}/>
         <Results headers={this.state.headers} count={this.state.count} results={this.state.results} />
+        <History check="hi"> {this.allInput} </History>
         <Footer />
       </React.Fragment>
     );

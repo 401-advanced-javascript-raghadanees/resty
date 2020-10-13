@@ -9,7 +9,7 @@ class Form extends React.Component {
     this.state = { 
       url: '',
       method:'',
-      results:[],
+      allInput:[],
     };
   }
 
@@ -24,11 +24,15 @@ class Form extends React.Component {
     let method = e.target.value;
     console.log('method from select',method,e.target.value);
     this.setState({ method });
+    // this.props.handelUpdate(this.state.method);
   }
 
 
   handleClick = () =>{
-    this.props.handelUpdate(this.state.url);
+    let allInput = this.state.allInput;
+    allInput.push(<p  key={this.state.allInput.length + 1} ><span>{this.state.method}</span> {this.state.url} </p>);
+    this.setState({ allInput});
+    this.props.handelUpdate(this.state.url,this.state.allInput);
     this.setState({ url: '' });
 
   }
