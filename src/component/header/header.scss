@@ -11,3 +11,16 @@ h1{
     font-size: 39px;
     font-family: ui-sans-serif;
 }
+
+li{
+  display: inline;
+  margin-bottom: 50px;
+  // color: aliceblue;
+  font-size: 20px;
+}
+.nav a{
+  color: aliceblue;
+  padding-right:10px;
+  text-align: center;
+  text-decoration: none;
+}

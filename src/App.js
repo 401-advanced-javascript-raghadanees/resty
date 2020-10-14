@@ -2,10 +2,13 @@
 /* eslint-disable no-undef */
 import React from 'react';
 import './App.css';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Form from './component/form/form';
 import Footer from './component/footer/footer';
 import Header from './component/header/header.js';
 import Results from './component/results/results.js';
+import Help from './component/help/help';
+
 // import History from './component/history/history.js';
 // import If from './component/if/if';
 
@@ -37,15 +40,22 @@ class App extends React.Component {
   render() {
     
     return (
-      <React.Fragment>
+      <BrowserRouter>
         <Header />
+        <Switch>
+            <Route exact path="/">
         <Form loading={this.state.loading} handelUpdate={this.handelUpdate.bind(this)} toggle={this.toggleLoading.bind(this)}/>
-        {/* <If condition={this.state.results}> */}
           <Results loading={this.state.loading} count={this.state.count} results={this.state.results} headers={this.state.headers} />
-        {/* </If> */}
-        {/* <History toggle={this.toggleLoading}/> */}
+          </Route>
+          <Route exact path="/history">
+          <div>This is history page </div>
+            </Route>
+            <Route exact path="/help">
+              <Help />
+            </Route>
+        </Switch>
         <Footer />
-      </React.Fragment>
+      </BrowserRouter>
     );
   }
 }
