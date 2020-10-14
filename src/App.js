@@ -1,37 +1,49 @@
 
 /* eslint-disable no-undef */
 import React from 'react';
-// import logo from './logo.svg';
 import './App.css';
 import Form from './component/form/form';
 import Footer from './component/footer/footer';
 import Header from './component/header/header.js';
 import Results from './component/results/results.js';
+// import History from './component/history/history.js';
+// import If from './component/if/if';
 
 class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
       count:0,
-      results: [],
-      headers: [],
+      results: null,
+      headers: null,
+      loading: false,
     };
   }
 
+  toggleLoading = () => {
+    this.setState({ loading: !this.state.loading });
+    console.log('loading in toggleLoading app.js....', this.state.loading)
+  }
+
   // url.......  https://swapi.dev/api/people/
-  handelUpdate = async (url)=> {
-    console.log('url from app.js ', url);
-    let raw = await fetch(url);
-    let data = await raw.json();
-    this.setState({headers: raw.headers, results: data.results, count: data.count });
+
+  handelUpdate = (count, results, headers)=> {
+    console.log('count from app.js ', count);
+    console.log('results from app.js ', results);
+    console.log('results from app.js ', headers);
+    this.setState({count, results, headers});
   };
 
   render() {
+    
     return (
       <React.Fragment>
         <Header />
-        <Form handelUpdate={this.handelUpdate}/>
-        <Results headers={this.state.headers} count={this.state.count} results={this.state.results} />
+        <Form loading={this.state.loading} handelUpdate={this.handelUpdate.bind(this)} toggle={this.toggleLoading.bind(this)}/>
+        {/* <If condition={this.state.results}> */}
+          <Results loading={this.state.loading} count={this.state.count} results={this.state.results} headers={this.state.headers} />
+        {/* </If> */}
+        {/* <History toggle={this.toggleLoading}/> */}
         <Footer />
       </React.Fragment>
     );
