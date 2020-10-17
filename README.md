@@ -1,10 +1,12 @@
-# resty
+# RESTy
 
 
 ## Author: Raghad Anees
 
 - A browser based API testing tool
 - Our application will be an API testing tool that can be run in any browser, allowing a user to easily interact with APIs in a familiar interface.
+
+## GitHub Deployment --> [link](https://401-advanced-javascript-raghadanees.github.io/resty)
 
 ## installation 
 - `npx create-react-app resty`
@@ -24,6 +26,10 @@
 
 ### lab-27
 ![UML](/assets/lab27.png)
+
+## resty final UML
+![UML](/assets/restyfinUML.jpg)
+
 
 
 

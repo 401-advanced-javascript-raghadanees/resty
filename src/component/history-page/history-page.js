@@ -1,8 +1,9 @@
 import React from 'react';
-import './history.scss';
+import './history-page.scss';
 
-// import { Redirect } from 'react-router-dom';
-class History extends React.Component {
+import { Redirect } from 'react-router-dom';
+
+class HistoryPage extends React.Component {
 
   constructor(props) {
     super(props);
@@ -22,10 +23,9 @@ class History extends React.Component {
     let options = {
       method : this.props.savedRequests[i].method,
       headers: { 'Content-Type': 'application/json'},
-      body: this.props.savedRequests[i].method === 'get' || this.props.savedRequests[i].method === 'delete'
-        ? null : JSON.stringify(this.props.body),
+      body: this.props.savedRequests[i].body ? this.props.savedRequests[i].body : null,
     };
-    this.props.fetchData(url, options);
+    this.fetchData(url, options);
    
   }
 
@@ -34,6 +34,22 @@ class History extends React.Component {
     this.setState({savedRequests});
   }
 
+  fetchData = async (url, options) => {
+    let raw = await fetch(url, options);
+    console.log('raw.......', raw);
+    let data = await raw.json();
+    console.log('data,,,,,,,,,', data);
+    let count = data.count;
+    let results = data.results;
+    let headers = {};
+    raw.headers.forEach((val, key) => headers[key] = val);
+    console.log('raw.headers--------', raw.headers);
+    this.props.handelUpdate(count, results, headers);
+    // {this.props.loading == true} ? {this.props.loading = false} : {this.props.loading = false}
+    // this.props.loading == true ? this.props.toggle() : console.log("loading")
+    return <Redirect to='/history'/>;
+      
+  }
   render() {
     
     return (
@@ -62,4 +78,4 @@ class History extends React.Component {
 }
 
   
-export default History;
+export default HistoryPage;
