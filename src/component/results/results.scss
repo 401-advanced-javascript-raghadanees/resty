@@ -1,3 +1,23 @@
+
+#overlay {
+display: block;
+background: rgba(0, 0, 0, 0.2);
+position: absolute;
+top: 0;
+bottom: 0;
+right: 0;
+left: 0;
+}
+
+
+.ReactJsonAside{
+   width: 55%;
+   height: 100em;
+  padding-left: 15px;
+  margin-left: 15px;
+   float: right;
+   margin-top: 8%;
+}
 .about {
     $cubic: cubic-bezier(0.64, 0.01, 0.07, 1.65);
     $transition: 0.6s $cubic;

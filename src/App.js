@@ -8,7 +8,7 @@ import Footer from './component/footer/footer';
 import Header from './component/header/header.js';
 import Results from './component/results/results.js';
 import Help from './component/help/help';
-
+import HistoryPage from './component/history-page/history-page';
 // import History from './component/history/history.js';
 // import If from './component/if/if';
 
@@ -20,6 +20,7 @@ class App extends React.Component {
       results: null,
       headers: null,
       loading: false,
+      savedRequests: JSON.parse(localStorage.getItem('history')) || [],
     };
   }
 
@@ -29,6 +30,7 @@ class App extends React.Component {
   }
 
   // url.......  https://swapi.dev/api/people/
+  // url.......  https://swapi.dev/api/films/
 
   handelUpdate = (count, results, headers)=> {
     console.log('count from app.js ', count);
@@ -48,11 +50,17 @@ class App extends React.Component {
           <Results loading={this.state.loading} count={this.state.count} results={this.state.results} headers={this.state.headers} />
           </Route>
           <Route exact path="/history">
-          <div>This is history page </div>
+          {/* <div>This is history page </div> */}
+          <HistoryPage 
+                savedRequests={this.state.savedRequests}
+                handelUpdate = {this.handelUpdate.bind(this)}
+                />
+                <Results loading={this.state.loading} count={this.state.count} results={this.state.results} headers={this.state.headers} />
             </Route>
             <Route exact path="/help">
               <Help />
             </Route>
+            <Route>404 Page Not Found!</Route>
         </Switch>
         <Footer />
       </BrowserRouter>

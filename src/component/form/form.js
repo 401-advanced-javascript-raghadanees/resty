@@ -1,7 +1,7 @@
 import React from 'react';
 import './main.scss';
 import History from '../history/history';
-import { If, Then} from '../if/if.js';
+// import { If, Then} from '../if/if.js';
 
 class Form extends React.Component {
   constructor(props) {
@@ -37,6 +37,7 @@ class Form extends React.Component {
 
   handelBody = (e) => {
     let body = e.target.value;
+    console.log('body......', body);
     this.setState({ body });
   }
 
@@ -105,7 +106,7 @@ class Form extends React.Component {
           <input onClick={this.handleMethod} type="radio" id="delete" name="method" value="delete" />
           <label htmlFor="delete">DELETE</label>
         </form>
-        <textarea onChange={this.handelBody}></textarea>
+        <textarea rows="4" cols="30" onChange={this.handelBody}></textarea>
 
         <History savedRequests={this.state.savedRequests} fetchData={this.fetchData} body={this.state.body} />
 
